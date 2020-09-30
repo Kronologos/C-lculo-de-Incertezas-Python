@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document} \section{Cálculo da incerteza de R}Para o cálculo da incerteza de R, usaremos o método das \emph{Derivadas Parcias}. A seguinte equação descreve a função R: \\\begin{equation} 
+ R = \frac{L \rho}{\pi r^{2}}
+\end{equation} 
+Os valores das variáveis são:
+ \begin{align*} 
+r &= (0.0025\pm 0.0005) m\\ L &= (0.3\pm 0.005) m\\ \rho &= (1.01e-05\pm 5e-07) \Omega m
+ \end{align*} 
+As derivadas parcias da função R({r, L, rho}), substituindo os valores das variáveis, são: 
+\begin{align}
+ \frac{\partial R}{\partial r} = - \frac{2 L \rho}{\pi r^{3}}&= -123.45\\ \frac{\partial R}{\partial L} = \frac{\rho}{\pi r^{2}}&= 0.51\\ \frac{\partial R}{\partial \rho} = \frac{L}{\pi r^{2}}&= 15278.87
+\end{align}
+Calculando agora a incerteza, tem-se: 
+\begin{align} 
+ \Delta R &= \sqrt{\left( \frac{\partial R}{\partial r}\Delta r\right)^{ 2 } + \left( \frac{\partial R}{\partial L}\Delta L\right)^{ 2 } + \left( \frac{\partial R}{\partial \rho}\Delta \rho\right)^{ 2 }} \\ \Delta R &= \sqrt{\left(-123.45\times 0.0005\right)^{ 2 } + \left(0.51\times 0.005\right)^{ 2 } + \left(15278.87\times 5e-07\right)^{ 2 }} \\ \Delta R &= \sqrt{0.003874839092119225} \\ \Delta R &= 0.06 \Omega
+ \end{align}
+ Portanto, o valor final de R é:
+ \begin{equation} 
+ \boxed{ R = \left(15.0 \pm 6.0\right) 10^{ -2} \Omega}
+ \end{equation}\end{document}

@@ -54,10 +54,10 @@ def der_latex(expression,vari,pares_val,pares_inc,i,unidades,unids_vars,file):
     for var in vars:
         deriv = str(latex(diff(expression,var)))
         if(count != 0):
-            stringExp = "\\\\ \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} &= " + deriv
+            stringExp = "\\\\ \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} = " + deriv
         if(count == 0):
-            stringExp = " \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} &= " + deriv
-        file.write(stringExp+ "&&= ")
+            stringExp = " \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} = " + deriv
+        file.write(stringExp+ "&= ")
         a = round(diff(expression,var).evalf(subs = pares_val),i)
         valores[var] = a
         der = str(latex(a))
