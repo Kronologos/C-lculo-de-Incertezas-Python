@@ -54,10 +54,10 @@ def der_latex(expression,vari,pares_val,pares_inc,i,unidades,unids_vars,file):
     for var in vars:
         deriv = str(latex(diff(expression,var)))
         if(count != 0):
-            stringExp = "\\\\ \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} = " + deriv
+            stringExp = "\\\\ \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} &= " + deriv
         if(count == 0):
-            stringExp = " \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} = " + deriv
-        file.write(stringExp+ "&= ")
+            stringExp = " \\frac{\partial "+vari+"}{\\partial "+str(latex(sympify(var)))+"} &= " + deriv
+        file.write(stringExp+ "&&= ")
         a = round(diff(expression,var).evalf(subs = pares_val),i)
         valores[var] = a
         der = str(latex(a))
@@ -103,16 +103,18 @@ prefixos = {-6:"\\mu ",-3:"m ",3:"k ", 6:"M "}
 
 
 def ajuste(resul,incert,ida):
+    guess = 0
     for i in range(-6,6):
         if((incert / (10**i)) <= 10 and (incert / (10**i)) >= 1):
             if (i!=1) and (i != 0) and (i!=-1):
                 guess = i
                 nincert = round((incert/(10**i)),1)
                 nresul = round(resul / (10 ** i),1)
-            else: 
-                guess = 0
-                nresul = resul
-                nincert = incert
+        else: 
+            guess = 0
+            nresul = resul
+            nincert = incert
+        
     if guess in (-6,-3,3,6):
         guess = prefixos[guess]
     return nresul,nincert,guess
